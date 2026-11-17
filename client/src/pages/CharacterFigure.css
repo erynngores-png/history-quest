@@ -1,0 +1,191 @@
+.skin-tone-1 { --skin-tone: #fce4d6; }
+.skin-tone-2 { --skin-tone: #e8c5a4; }
+.skin-tone-3 { --skin-tone: #c59775; }
+.skin-tone-4 { --skin-tone: #946342; }
+.skin-tone-5 { --skin-tone: #593922; }
+
+.hair-color-1 { --hair-color: #1a1a1a; }
+.hair-color-2 { --hair-color: #6b3e26; }
+.hair-color-3 { --hair-color: #d4af37; }
+.hair-color-4 { --hair-color: #9e2a2b; }
+.hair-color-5 { --hair-color: #dcdcdc; }
+
+.character-figure {
+    height: 250px;
+    width: 120px;
+    position: relative;
+}
+
+.character-head {
+    width: 45px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: var(--skin-tone, tan);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-22.5px);
+    z-index: 2;
+}
+
+.character-hair {
+    position: absolute;
+    background-color: var(--hair-color, #1a1a1a);
+    z-index: 4;
+}
+
+.character-hair.hair-style-1 {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 49px;
+    height: 22px;
+    border-radius: 25px 25px 4px 4px;
+}
+
+.character-hair.hair-style-2 {
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 32px;
+    border-radius: 26px 26px 10px 10px;
+}
+
+.character-hair.hair-style-3 {
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 
+        -8px 2px 0 0 var(--hair-color, #1a1a1a),
+        8px 2px 0 0 var(--hair-color, #1a1a1a),
+        -4px -6px 0 0 var(--hair-color, #1a1a1a),
+        4px -6px 0 0 var(--hair-color, #1a1a1a);
+}
+
+.character-hair.hair-style-4 {
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 75px;
+    border-radius: 26px 26px 15px 15px;
+    z-index: 1; 
+}
+
+.character-eyes {
+    position: absolute;
+    top: 20px;
+    width: 22px;
+    height: 5px;
+    display: flex;
+    justify-content: space-between;
+    left: 50%;
+    transform: translateX(-11px);
+}
+
+.character-eye-left,
+.character-eye-right {
+    width: 4px;
+    height: 4px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.character-nose {
+    position: absolute;
+    top: 25px;
+    width: 6px;
+    height: 4px;
+    background-color: var(--skin-tone, tan);
+    border-radius: 50%;
+    left: 20px;
+    border: 1px solid black;
+    border-left: none;
+    box-sizing: border-box;
+}
+
+.character-mouth {
+    position: absolute;
+    top: 34px;
+    width: 8px;
+    height: 4px;
+    background-color: black;
+    left: 19px;
+    border-radius: 0 0 4px 4px;
+}
+
+.character-neck {
+    width: 18px;
+    height: 10px;
+    background-color: var(--skin-tone, tan);
+    position: absolute;
+    top: 53px;
+    left: 50%;
+    transform: translateX(-9px);
+    z-index: 1;
+}
+
+.character-arm-left {
+    width: 18px;
+    height: 65px;
+    background-color: var(--skin-tone, tan);
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 73px;
+    left: 12px;
+}
+
+.character-arm-right {
+    width: 18px;
+    height: 65px;
+    background-color: var(--skin-tone, tan);
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 73px;
+    right: 12px;
+}
+
+.character-leg-left {
+    width: 24px;
+    height: 65px;
+    background-color: black;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    top: 146px;
+    left: 32px;
+}
+
+.character-leg-right {
+    width: 24px;
+    height: 65px;
+    background-color: black;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    top: 146px;
+    left: 64px;
+}
+
+.character-body {
+    width: 65px;
+    height: 85px;
+    border-radius: 12px;
+    background-color: darkgreen;
+    position: absolute;
+    top: 63px;
+    left: 50%;
+    transform: translateX(-32.5px);
+    z-index: 3;
+}
+
+.character-body.clothing-1 { background-color: darkgreen; }
+.character-body.clothing-2 { background-color: navy; }
+.character-body.clothing-3 { background-color: darkred; }
+.character-body.clothing-4 { background-color: rebeccapurple; }

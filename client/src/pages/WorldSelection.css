@@ -1,0 +1,170 @@
+.world-selection {
+    min-height: 100vh;
+    width: 100%;
+    background-color:rgb(234, 200, 134);
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+.world-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    border-bottom: 5px solid white;
+}
+
+.world-logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo-star {
+    font-size: 30px;
+    margin-right: 10px;
+    color: white;
+}
+
+.student-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(215, 193, 164);
+    padding: 10px 10px 10px 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.profile-avatar {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.student-profile span:last-child {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.world-intro {
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+    margin: 10px;
+}
+
+.world-eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.world-intro h1 {
+    font-size: 32px;
+    color: white;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.world-description {
+    font-size: 16px;
+    color: white;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.world-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.world-option {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.world-emblem {
+    position: relative;
+    width: 320px;
+    height: 200px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.world-available {
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.world-locked {
+    cursor: not-allowed;
+    filter: grayscale(80%) opacity(65%);
+}
+
+
+.emblem-ribbon {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: gold;
+    padding: 8px 12px;
+    font-weight: bold;
+    color: black;
+    font-size: 12px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.emblem-decoration {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: gold;
+    font-size: 18px;
+}
+
+.emblem-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.world-details {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: tan;
+    top: 5px;
+    left: 5px;
+}
+
+.world-option:hover .world-details {
+    opacity: 1;
+}
+
+.world-card-visual {
+    position: relative;
+    width: 320px;
+    height: 200px;
+}
