@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./App.css";
 import welcomeImage from "./assets/history-quest-welcome.png";
 import AccountChoice from "./pages/AccountChoice";
+import StudentRegistration from "./pages/StudentRegistration";
+import StudentLoginForm from "./pages/StudentLoginForm";
 import WorldSelection from "./pages/WorldSelection";
 import CharacterCreator from "./pages/CharacterCreator";
 import TownSquare from "./pages/TownSquare";
@@ -12,6 +14,7 @@ function App() {
   const [selectedWorld, setSelectedWorld] = useState(null);
   const [character, setCharacter] = useState(null);
   const [selectedRole, setSelectedRole] = useState(null);
+  const [studentAction, setStudentAction] = useState(null);
 
   function resetGame() {
     setStarted(false);
@@ -50,18 +53,35 @@ function App() {
             setSelectedRole(roleId);
           }}
         />
+      
+      ) : studentAction === null ? (
+        <StudentRegistration
+          onChooseAction={(actionId) => {
+            setStudentAction(actionId);
+          }}
+        />
+
+      ) : studentAction === null ? (
+        <StudentLoginForm 
+          onLogin={(loginId) => {
+            setStudentAction(actionId);
+          }}
+        />
+
       ) : character === null ? (
         <CharacterCreator
           onComplete={(newCharacter) => {
             setCharacter(newCharacter);
           }}
         />
+
       ) : selectedWorld === null ? (
         <WorldSelection
           onSelectWorld={(worldId) => {
             setSelectedWorld(worldId);
           }}
         />
+
       ) : (
         <>
           <TownSquare character={character} />
