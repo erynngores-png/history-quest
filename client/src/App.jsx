@@ -5,6 +5,10 @@ import welcomeImage from "./assets/history-quest-welcome.png";
 import AccountChoice from "./pages/AccountChoice";
 import StudentRegistration from "./pages/StudentRegistration";
 import StudentLoginForm from "./pages/StudentLoginForm";
+import StudentRegisterForm from "./pages/StudentRegisterForm";
+import TeacherRegistration from "./pages/TeacherRegistration";
+import TeacherRegisterForm from "./pages/TeacherRegisterForm";
+import TeacherLoginForm from "./pages/TeacherLoginForm";
 import WorldSelection from "./pages/WorldSelection";
 import CharacterCreator from "./pages/CharacterCreator";
 import TownSquare from "./pages/TownSquare";
@@ -15,12 +19,15 @@ function App() {
   const [character, setCharacter] = useState(null);
   const [selectedRole, setSelectedRole] = useState(null);
   const [studentAction, setStudentAction] = useState(null);
+  const [teacherAction, setTeacherAction] = useState(null);
 
   function resetGame() {
     setStarted(false);
     setSelectedWorld(null);
     setCharacter(null);
     setSelectedRole(null);
+    setStudentAction(null);
+    setTeacherAction(null);
   }
 
   return (
@@ -54,19 +61,48 @@ function App() {
           }}
         />
       
-      ) : studentAction === null ? (
+      ) : selectedRole === "student" && studentAction === null ? (
         <StudentRegistration
           onChooseAction={(actionId) => {
             setStudentAction(actionId);
           }}
         />
 
-      ) : studentAction === null ? (
-        <StudentLoginForm 
+      ) : selectedRole === "student" && studentAction === "login" ? (
+        <StudentLoginForm
           onLogin={(loginId) => {
-            setStudentAction(actionId);
+            //handle login here
           }}
         />
+
+      ) : selectedRole === "student" && studentAction === "register" ? (
+        <StudentRegisterForm
+          onRegister={(registerId) => {
+            //handle registration here
+          }}
+        />
+
+      ) : selectedRole === "teacher" && teacherAction === null ? (
+        <TeacherRegistration
+          onChooseAction={(actionId) => {
+            setTeacherAction(actionId);
+          }}
+        />
+
+      ) : selectedRole === "teacher" && teacherAction === "login" ? (
+        <TeacherLoginForm 
+          onLogin={(loginId) => {
+            //handle login here
+          }}
+        />
+
+      ) : selectedRole === "teacher" && teacherAction === "register" ? (
+        <TeacherRegisterForm
+          onRegister={(registerId) => {
+            //handle registration here
+          }} 
+        />
+      
 
       ) : character === null ? (
         <CharacterCreator
