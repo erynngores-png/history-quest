@@ -1,13 +1,16 @@
 import { useState } from "react";
 
-function TeacherRegisterForm () {
+function TeacherRegisterForm ({ onRegister }) {
     const[email, setEmail] = useState("");
     const[newPassword, setNewPassword] = useState("");
     
     return (
         <main>
             <h1>Enter your Email and Create a Password</h1>
-             <form>
+             <form onSubmit={(event) => {
+                event.preventDefault();
+                onRegister({ email, newPassword });
+             }}>
                 <label>Enter your Email :
                     <input 
                         type="email"
@@ -22,9 +25,12 @@ function TeacherRegisterForm () {
                         onChange={(event) => setNewPassword(event.target.value)}
                     />
                 </label>
+                
+                <button type="submit">Register</button>
             </form>
+
         </main>
-    )
+    );
 }
 
 export default TeacherRegisterForm;

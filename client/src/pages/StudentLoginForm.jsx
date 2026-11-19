@@ -7,10 +7,14 @@ function StudentLoginForm ({onLogin}) {
     return (
         <main>
             <h1>Student Login</h1>
-            <form>
+            <form onSubmit={(event) => {
+                event.preventDefault();
+                onLogin({ username, password });
+            }}>
                 <label>Enter your Username:
                     <input 
                         type="text"
+                        required
                         value={username}
                         onChange={(event) => setUsername(event.target.value)} 
                     />
@@ -18,13 +22,14 @@ function StudentLoginForm ({onLogin}) {
                 <label>Enter your Password:
                     <input 
                         type="password"
+                        required
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </label>
+                <button type="submit">Login</button>
             </form>
 
-            <button onClick={() => onLogin({username, password})}>Login</button>
         </main>
     )
 }
