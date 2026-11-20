@@ -187,22 +187,14 @@ function App() {
         <main>
           <h1>Something went wrong.</h1>
 
-          <button onClick={resetGame}>
-            Return to Welcome
-          </button>
-        </main>
-
-      )}
-
-      {studentLoggedIn && selectedRole === "student" && (
-        <footer>
           <button
             className="back-button"
             onClick={resetGame}
           >
             Back to Welcome
           </button>
-        </footer>
+        </main>
+
       )}
 
     </main>

@@ -13,13 +13,6 @@ function TownSquare({ character, onBack }) {
     const [firstChoice, setFirstChoice] = useState(null);
     const [visibleChars, setVisibleChars] = useState(0);
 
-    <button
-        type="button"
-        onClick={onBack}
-    >
-        Back to World Selection
-    </button>
-
     const conversation = [
         {
             speaker: "Mayor Quincy",
@@ -87,6 +80,14 @@ function TownSquare({ character, onBack }) {
 
     return (
         <section className="town-square-page">
+
+            <button
+                type="button"
+                onClick={onBack}
+            >
+                Back to World Selection
+            </button>
+
             <div
                 className="town-square-scene"
                 style={{ backgroundImage: `url(${townBackground})` }}
