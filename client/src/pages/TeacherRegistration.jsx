@@ -1,9 +1,10 @@
-function TeacherRegistration ({onChooseAction}) {
+function TeacherRegistration ({onChooseAction, onBack}) {
     return(
         <main>
             <h1>Teacher Login</h1>
             <button onClick={() => onChooseAction("login")}>Login</button>
             <button onClick={() => onChooseAction("register")}>Create an Account</button>
+            <button onClick={() => onBack("back")}>Back</button>
         </main>
     )
 }

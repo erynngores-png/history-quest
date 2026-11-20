@@ -14,7 +14,7 @@ const worlds = [
     }
 ];
 
-function WorldSelection({ onSelectWorld }) {
+function WorldSelection({ onSelectWorld, onBack }) {
     function enterWorld(world) {
         if (!world.available) return;
 
@@ -98,6 +98,15 @@ function WorldSelection({ onSelectWorld }) {
                     </article>
                 ))}
             </section>
+
+            <button 
+                type="button"
+                onClick={() => {
+                    console.log("Back button clicked");
+                    onBack();
+                }}>
+                    Back
+                </button>
 
             <footer className="world-footer">
                 <span>✦</span> YOUR CHARACTER · YOUR JOURNEY · YOUR HISTORY{" "}

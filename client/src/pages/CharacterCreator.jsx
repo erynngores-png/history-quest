@@ -2,7 +2,7 @@ import "./CharacterCreator.css";
 import { useState } from "react";
 import CharacterFigure from "../pages/CharacterFigure";
 
-function CharacterCreator({ onComplete }) {
+function CharacterCreator({ onComplete, onBack }) {
     const [characterName, setCharacterName] = useState("");
     const [skinTone, setSkinTone] = useState("skin-tone-1");
     const [hairStyle, setHairStyle] = useState("hair-style-1");
@@ -86,6 +86,14 @@ function CharacterCreator({ onComplete }) {
                             <button type="button" className={`clothing-button clothing-4 ${clothing === "clothing-4" ? "selected" : ""}`} onClick={() => setClothing("clothing-4")}>4</button>
                         </div>
                     </div>
+
+                    <button 
+                        type="button"
+                        onClick={() => {
+                            onBack()
+                        }}>
+                    Back
+                    </button>
 
                     <button
                         type="button"

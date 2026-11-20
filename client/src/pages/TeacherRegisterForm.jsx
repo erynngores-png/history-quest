@@ -14,6 +14,7 @@ function TeacherRegisterForm ({ onRegister }) {
                 <label>Enter your Email :
                     <input 
                         type="email"
+                        required
                         value={email}
                         onChange={(event) => setEmail(event.target.value)} 
                     />
@@ -21,6 +22,8 @@ function TeacherRegisterForm ({ onRegister }) {
                 <label>Create your Password:
                     <input 
                         type="password"
+                        required
+                        minLength={8}
                         value={newPassword}
                         onChange={(event) => setNewPassword(event.target.value)}
                     />

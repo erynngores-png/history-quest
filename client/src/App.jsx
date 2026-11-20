@@ -19,6 +19,7 @@ function App() {
   const [selectedWorld, setSelectedWorld] = useState(null);
   const [character, setCharacter] = useState(null);
   const [selectedRole, setSelectedRole] = useState(null);
+  const [gameScreen, setGameScreen] = useState("character");
 
   const [studentAction, setStudentAction] = useState(null);
   const [teacherAction, setTeacherAction] = useState(null);
@@ -75,6 +76,10 @@ function App() {
           onChooseAction={(actionId) => {
             setStudentAction(actionId);
           }}
+          onBack={() => {
+            setStudentAction(null);
+            setSelectedRole(null);
+          }}
         />
 
       ) : selectedRole === "student" && studentAction === "login" ? (
@@ -103,6 +108,10 @@ function App() {
           onChooseAction={(actionId) => {
             setTeacherAction(actionId);
           }}
+          onBack={() => {
+            setSelectedRole(null);
+            setTeacherAction(null);
+          }}
         />
 
       ) : selectedRole === "teacher" && teacherAction === "login" ? (
@@ -127,27 +136,40 @@ function App() {
 
       ) : selectedRole === "student" && studentLoggedIn ? (
 
-        character === null ? (
+        gameScreen === "character" ? (
 
           <CharacterCreator
             onComplete={(newCharacter) => {
               setCharacter(newCharacter);
+              setGameScreen("world");
+            }}
+            onBack={() => {
+              resetGame();
             }}
           />
 
-        ) : selectedWorld === null ? (
+        ) : gameScreen === "world" ? (
 
           <WorldSelection
             onSelectWorld={(worldId) => {
               setSelectedWorld(worldId);
+              setGameScreen("town");
+            }}
+            onBack={() => {
+              setGameScreen("character");
             }}
           />
 
-        ) : (
+        ) : gameScreen === "town" ? (
 
-          <TownSquare character={character} />
+          <TownSquare 
+            character={character}
+            onBack={() => {
+              setGameScreen("world");
+            }} 
+            />
 
-        )
+        ) : null
 
       ) : selectedRole === "teacher" && teacherLoggedIn ? (
 
