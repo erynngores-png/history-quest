@@ -7,11 +7,12 @@ body {
 }
 
 .character-creator {
-    min-height: 100vh;
+    min-height: 100dvh;
     background-color: tan;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .character-header {
@@ -32,20 +33,33 @@ body {
 .character-creator-content {
     display: flex;
     gap: 20px;
-    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.character-preview {
-    background-color: white;
-    padding: 20px;
+.character-selection-grid {
+
+}
+
+.character-card:hover  {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.character-card {
+    border: 3px solid black;
     border-radius: 8px;
-    border: solid black 5px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 5px;
+    transition: 0.2s;
+    width: 150px;
+    height: 200px;
+}
+
+.character-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
 }
 
 .character-customization {
@@ -74,45 +88,9 @@ body {
     font: inherit;
 }
 
-.skin-tone-options,
-.hair-style-options,
-.hair-color-options,
-.clothing-options {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.skin-tone-button,
-.hair-color-button {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: solid 2px #ccc;
-    cursor: pointer;
-}
-
-.skin-tone-button {
-    background-color: var(--skin-tone);
-}
-
-.hair-color-button {
-    background-color: var(--hair-color);
-}
-
-.hair-style-button,
-.clothing-button {
-    padding: 8px 12px;
-    height: 45px;
-    border-radius: 8px;
-    border: solid 2px #ccc;
-    background-color: #eee;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.selected {
-    border: solid 3px blue !important;
+.character-card.selected {
+    border: 3px solid gold;
+    box-shadow: 0 0 12px gold;
 }
 
 .begin-adventure-button {
@@ -121,13 +99,25 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: white;
-    background-color: blue;
+    background-color: black;
     border-radius: 8px;
     margin-top: 10px;
     border: none;
     cursor: pointer;
 }
 
+begin-adventure-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .begin-adventure-button:hover {
-    background-color: darkblue;
+    background-color: white;
+}
+
+html, body, #root {
+    min-height: 100%;
+    margin: 0;
+    background-color: tan;
 }

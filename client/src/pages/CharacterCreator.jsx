@@ -1,38 +1,67 @@
 import "./CharacterCreator.css";
 import { useState } from "react";
-import CharacterFigure from "../pages/CharacterFigure";
+
+import whiteBoy from "../assets/white-boy.png";
+import whiteGirl from "../assets/white-girl.png";
+import blackBoy from "../assets/black-boy.png";
+import blackGirl from "../assets/black-girl.png";
+import asianGirl from "../assets/asian-girl.png";
+import asianBoy from "../assets/asian-boy.png";
+import latinaGirl from "../assets/latina-girl.png";
+import latinoBoy from "../assets/latino-boy.png";
+
+const characters = [
+    {id: 1, name: 'Character 1', img: latinoBoy},
+    {id: 2, name: 'Character 2', img: latinaGirl},
+    {id: 3, name: 'Character 3', img: whiteBoy},
+    {id: 4, name: 'Character 4', img: whiteGirl},
+    {id: 5, name: 'Character 5', img: blackBoy},
+    {id: 6, name: 'Character 6', img: blackGirl},
+    {id: 7, name: 'Character 7', img: asianBoy},
+    {id: 8, name: 'Character 8', img: asianGirl}
+];
 
 function CharacterCreator({ onComplete, onBack }) {
     const [characterName, setCharacterName] = useState("");
-    const [skinTone, setSkinTone] = useState("skin-tone-1");
-    const [hairStyle, setHairStyle] = useState("hair-style-1");
-    const [hairColor, setHairColor] = useState("hair-color-1");
-    const [clothing, setClothing] = useState("clothing-1");
+    const [selectedCharacter, setSelectedCharacter] = useState("");
+
 
     return (
         <main className="character-creator">
             <header className="character-header">
-                <h1>Create Your Character</h1>
-                <p>Customize your explorer before traveling into history!</p>
+                <h1>Choose Your Character</h1>
+                <p>Choose which explorer you would like to travel back in time with!</p>
             </header>
 
             <section className="character-creator-content">
-                <div className="character-preview">
-                    <h2>Your Character</h2>
-                    <p>{characterName || "Your Explorer"}</p>
-                    <CharacterFigure
-                        character={{
-                            characterName,
-                            skinTone,
-                            hairStyle,
-                            hairColor,
-                            clothing,
-                        }}
-                    />
-                </div>
+
+                <section className="character-selection-grid">
+                    <h1>Select Your Explorer</h1>
+                    {characters.map((character) => (
+                        <button
+                            key={character.id}
+                            type="button"
+                            className={
+                                selectedCharacter === character.id
+                                    ? "character-card selected"
+                                    : "character-card"
+                            }
+                            onClick={() => {
+                                console.log("Selected:", character.id);
+                                setSelectedCharacter(character.id);
+                            }}
+                        >
+                            <img 
+                                src={character.img}
+                                alt={character.name}
+                            />
+                            <p>{character.name}</p>
+                        </button>
+                    ))}
+                </section>
 
                 <div className="character-customization">
-                    <h2>Customize Your Explorer</h2>
+                    <h2>Name Your Explorer</h2>
 
                     <div className="customization-option">
                         <label htmlFor="character-name">Character Name</label>
@@ -43,48 +72,6 @@ function CharacterCreator({ onComplete, onBack }) {
                             value={characterName}
                             onChange={(event) => setCharacterName(event.target.value)}
                         />
-                    </div>
-
-                    <div className="customization-option">
-                        <label>Skin Tone</label>
-                        <div className="skin-tone-options" aria-label="Choose a skin tone">
-                            <button type="button" className={`skin-tone-button skin-tone-1 ${skinTone === "skin-tone-1" ? "selected" : ""}`} onClick={() => setSkinTone("skin-tone-1")}></button>
-                            <button type="button" className={`skin-tone-button skin-tone-2 ${skinTone === "skin-tone-2" ? "selected" : ""}`} onClick={() => setSkinTone("skin-tone-2")}></button>
-                            <button type="button" className={`skin-tone-button skin-tone-3 ${skinTone === "skin-tone-3" ? "selected" : ""}`} onClick={() => setSkinTone("skin-tone-3")}></button>
-                            <button type="button" className={`skin-tone-button skin-tone-4 ${skinTone === "skin-tone-4" ? "selected" : ""}`} onClick={() => setSkinTone("skin-tone-4")}></button>
-                            <button type="button" className={`skin-tone-button skin-tone-5 ${skinTone === "skin-tone-5" ? "selected" : ""}`} onClick={() => setSkinTone("skin-tone-5")}></button>
-                        </div>
-                    </div>
-
-                    <div className="customization-option">
-                        <label>Hair Style</label>
-                        <div className="hair-style-options">
-                            <button type="button" className={`hair-style-button hair-style-1 ${hairStyle === "hair-style-1" ? "selected" : ""}`} onClick={() => setHairStyle("hair-style-1")}>Short</button>
-                            <button type="button" className={`hair-style-button hair-style-2 ${hairStyle === "hair-style-2" ? "selected" : ""}`} onClick={() => setHairStyle("hair-style-2")}>Med</button>
-                            <button type="button" className={`hair-style-button hair-style-3 ${hairStyle === "hair-style-3" ? "selected" : ""}`} onClick={() => setHairStyle("hair-style-3")}>Curly</button>
-                            <button type="button" className={`hair-style-button hair-style-4 ${hairStyle === "hair-style-4" ? "selected" : ""}`} onClick={() => setHairStyle("hair-style-4")}>Long</button>
-                        </div>
-                    </div>
-
-                    <div className="customization-option">
-                        <label>Hair Color</label>
-                        <div className="hair-color-options">
-                            <button type="button" className={`hair-color-button hair-color-1 ${hairColor === "hair-color-1" ? "selected" : ""}`} onClick={() => setHairColor("hair-color-1")}></button>
-                            <button type="button" className={`hair-color-button hair-color-2 ${hairColor === "hair-color-2" ? "selected" : ""}`} onClick={() => setHairColor("hair-color-2")}></button>
-                            <button type="button" className={`hair-color-button hair-color-3 ${hairColor === "hair-color-3" ? "selected" : ""}`} onClick={() => setHairColor("hair-color-3")}></button>
-                            <button type="button" className={`hair-color-button hair-color-4 ${hairColor === "hair-color-4" ? "selected" : ""}`} onClick={() => setHairColor("hair-color-4")}></button>
-                            <button type="button" className={`hair-color-button hair-color-5 ${hairColor === "hair-color-5" ? "selected" : ""}`} onClick={() => setHairColor("hair-color-5")}></button>
-                        </div>
-                    </div>
-
-                    <div className="customization-option">
-                        <label>Clothing</label>
-                        <div className="clothing-options">
-                            <button type="button" className={`clothing-button clothing-1 ${clothing === "clothing-1" ? "selected" : ""}`} onClick={() => setClothing("clothing-1")}>1</button>
-                            <button type="button" className={`clothing-button clothing-2 ${clothing === "clothing-2" ? "selected" : ""}`} onClick={() => setClothing("clothing-2")}>2</button>
-                            <button type="button" className={`clothing-button clothing-3 ${clothing === "clothing-3" ? "selected" : ""}`} onClick={() => setClothing("clothing-3")}>3</button>
-                            <button type="button" className={`clothing-button clothing-4 ${clothing === "clothing-4" ? "selected" : ""}`} onClick={() => setClothing("clothing-4")}>4</button>
-                        </div>
                     </div>
 
                     <button 
@@ -98,15 +85,15 @@ function CharacterCreator({ onComplete, onBack }) {
                     <button
                         type="button"
                         className="begin-adventure-button"
-                        onClick={() =>
+                        onClick={() => {
+
                             onComplete({
-                                characterName: characterName,
-                                skinTone: skinTone,
-                                hairStyle: hairStyle,
-                                hairColor: hairColor,
-                                clothing: clothing,
-                            })
-                        }
+                                characterName: characterName, 
+                                selectedCharacter,
+                                image: characters.find((character) => character.id === selectedCharacter).img
+                        });
+                        }}
+                        disabled={!selectedCharacter || !characterName.trim()}
                     >
                         Begin Adventure
                     </button>

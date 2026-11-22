@@ -7,8 +7,6 @@ import CharacterFigure from "../pages/CharacterFigure";
 const TYPING_SPEED_MS = 18;
 
 function TownSquare({ character, onBack }) {
-    console.log("TownSquare character:", character);
-
     const [conversationStep, setConversationStep] = useState(0);
     const [firstChoice, setFirstChoice] = useState(null);
     const [visibleChars, setVisibleChars] = useState(0);
