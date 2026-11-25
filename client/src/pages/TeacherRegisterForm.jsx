@@ -7,9 +7,27 @@ function TeacherRegisterForm ({ onRegister }) {
     return (
         <main>
             <h1>Enter your Email and Create a Password</h1>
-             <form onSubmit={(event) => {
+             <form onSubmit={async (event) => {
                 event.preventDefault();
-                onRegister({ email, newPassword });
+                const response = await fetch("http://localhost:3000/api/auth/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password: newPassword,
+                        role: "teacher"
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    onRegister();
+                } else {
+                    alert(data.message);
+                }
              }}>
                 <label>Enter your Email :
                     <input 

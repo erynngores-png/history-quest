@@ -95,11 +95,10 @@ function App() {
       ) : selectedRole === "student" && studentAction === "register" ? (
 
         <StudentRegisterForm
-          onRegister={(registerInfo) => {
-            console.log(registerInfo);
+          onRegister={() => {
             setStudentLoggedIn(true);
             setStudentAction("complete");
-          }}
+          }} 
         />
 
       ) : selectedRole === "teacher" && teacherAction === null ? (
@@ -117,8 +116,7 @@ function App() {
       ) : selectedRole === "teacher" && teacherAction === "login" ? (
 
         <TeacherLoginForm
-          onLogin={(loginInfo) => {
-            console.log(loginInfo);
+          onLogin={() => {
             setTeacherLoggedIn(true);
             setTeacherAction("complete");
           }}
@@ -127,8 +125,7 @@ function App() {
       ) : selectedRole === "teacher" && teacherAction === "register" ? (
 
         <TeacherRegisterForm
-          onRegister={(registerInfo) => {
-            console.log(registerInfo);
+          onRegister={() => {
             setTeacherLoggedIn(true);
             setTeacherAction("complete");
           }}

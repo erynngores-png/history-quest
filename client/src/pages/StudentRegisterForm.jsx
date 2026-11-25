@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function StudentRegisterForm ({ onRegister }) {
+function StudentRegisterForm ( {onRegister} ) {
     const[newUsername, setNewUsername] = useState("");
     const[newPassword, setNewPassword] = useState("");
     const[classCode, setClassCode] = useState("");
@@ -8,10 +8,34 @@ function StudentRegisterForm ({ onRegister }) {
     return (
         <main>
             <h1>Create a Username and Password</h1>
-             <form onSubmit={(event) => {
+             <form onSubmit={async (event) => {
                 event.preventDefault();
-                onRegister({ newUsername, newPassword, classCode })
-             }}>
+
+                try {
+                    const response = await fetch("http://localhost:3000/api/auth/register", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            username: newUsername,
+                            password: newPassword,
+                            role: "student",
+                            classCode
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        onRegister();
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (error) {
+                    alert("Could not connect to the server.");
+                }
+             }}
+             >
                 <label>Create your Username:
                     <input 
                         type="text"

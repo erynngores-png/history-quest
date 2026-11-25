@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "mongoose": "^9.12.3"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true
+  }
+}
