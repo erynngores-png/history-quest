@@ -24,7 +24,7 @@ function TeacherRegisterForm ({ onRegister }) {
                 const data = await response.json();
 
                 if (response.ok) {
-                    onRegister();
+                    onRegister(data.teacherClassCode);
                 } else {
                     alert(data.message);
                 }
@@ -42,6 +42,8 @@ function TeacherRegisterForm ({ onRegister }) {
                         type="password"
                         required
                         minLength={8}
+                        pattern="(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
+                        title="Password must have at least 8 characters, one number, and one special character."
                         value={newPassword}
                         onChange={(event) => setNewPassword(event.target.value)}
                     />

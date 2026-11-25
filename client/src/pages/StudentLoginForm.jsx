@@ -7,10 +7,33 @@ function StudentLoginForm ({onLogin}) {
     return (
         <main>
             <h1>Student Login</h1>
-            <form onSubmit={(event) => {
-                event.preventDefault();
-                onLogin({ username, password });
-            }}>
+                <form onSubmit={async (event) => {
+                    event.preventDefault();
+                
+                    try {
+                        const response = await fetch("http://localhost:3000/api/auth/login", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                username,
+                                password,
+                                role: "student"
+                            })
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            onLogin();
+                        } else {
+                            alert(data.message);
+                        }
+                    } catch (error) {
+                        alert("Unable to connect to the server.");
+                    }
+                }}>
                 <label>Enter your Username:
                     <input 
                         type="text"

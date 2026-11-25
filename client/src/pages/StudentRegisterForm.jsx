@@ -40,6 +40,9 @@ function StudentRegisterForm ( {onRegister} ) {
                     <input 
                         type="text"
                         required
+                        minLength-={3}
+                        maxLength={20}
+
                         value={newUsername}
                         onChange={(event) => setNewUsername(event.target.value)} 
                     />
@@ -48,6 +51,7 @@ function StudentRegisterForm ( {onRegister} ) {
                     <input 
                         type="password"
                         required
+                        minLength={8}
                         value={newPassword}
                         onChange={(event) => setNewPassword(event.target.value)}
                     />

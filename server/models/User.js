@@ -25,6 +25,11 @@ const userSchema = new mongoose.Schema({
     classCode: {
         type: String,
         default: null
+    },
+    teacherClassCode: {
+        type: String,
+        unique: true,
+        sparse: true
     }
 });
 

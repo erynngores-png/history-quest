@@ -13,6 +13,7 @@ import TeacherLoginForm from "./pages/TeacherLoginForm";
 import WorldSelection from "./pages/WorldSelection";
 import CharacterCreator from "./pages/CharacterCreator";
 import TownSquare from "./pages/TownSquare";
+import TeacherDashboard from "./pages/TeacherDashboard";
 
 function App() {
   const [started, setStarted] = useState(false);
@@ -20,6 +21,7 @@ function App() {
   const [character, setCharacter] = useState(null);
   const [selectedRole, setSelectedRole] = useState(null);
   const [gameScreen, setGameScreen] = useState("character");
+  const [teacherClassCode, setTeacherClassCode] = useState("");
 
   const [studentAction, setStudentAction] = useState(null);
   const [teacherAction, setTeacherAction] = useState(null);
@@ -125,7 +127,8 @@ function App() {
       ) : selectedRole === "teacher" && teacherAction === "register" ? (
 
         <TeacherRegisterForm
-          onRegister={() => {
+          onRegister={(classCode) => {
+            setTeacherClassCode(classCode);
             setTeacherLoggedIn(true);
             setTeacherAction("complete");
           }}
@@ -170,15 +173,11 @@ function App() {
 
       ) : selectedRole === "teacher" && teacherLoggedIn ? (
 
-        <main>
-          <h1>Teacher Dashboard</h1>
-          <p>Welcome to History Quest!</p>
-
-          <button onClick={resetGame}>
-            Log Out
-          </button>
-        </main>
-
+        <TeacherDashboard
+          classCode={teacherClassCode}
+          onLogout={resetGame}
+        />
+      
       ) : (
 
         <main>
